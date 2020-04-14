@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { VField } from "../../Common/forms/FormUtils";
-import { Card, CardHeader, CardBody } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 
 export default class TypeCategoryForm extends React.Component {
   constructor(props) {
@@ -44,52 +44,61 @@ export default class TypeCategoryForm extends React.Component {
                   name="typeCategoryIdentifierText"
                   errors={errors}
                   touched={touched}
-                  value={this.initialValues.typeCategoryIdentifierText}
+                  defaultValue={this.initialValues.typeCategoryIdentifierText}
+                  readOnly={this.props.readOnly}
                 />
                 <VField
                   name="typeCategoryName"
                   errors={errors}
                   touched={touched}
-                  value={this.initialValues.typeCategoryName}
+                  defaultValue={this.initialValues.typeCategoryName}
+                  readOnly={this.props.readOnly}
                 />
                 <VField
                   name="systemIdentifierText"
                   errors={errors}
                   touched={touched}
-                  value={this.initialValues.systemIdentifierText}
+                  defaultValue={this.initialValues.systemIdentifierText}
+                  readOnly={this.props.readOnly}
                 />
                 <VField
                   name="typeCategoryDescription"
                   errors={errors}
                   touched={touched}
-                  value={this.initialValues.typeCategoryDescription}
+                  defaultValue={this.initialValues.typeCategoryDescription}
+                  readOnly={this.props.readOnly}
                 />
                 <VField
                   name="rightSystemName"
                   errors={errors}
                   touched={touched}
-                  value={this.initialValues.rightSystemName}
+                  defaultValue={this.initialValues.rightSystemName}
+                  readOnly={this.props.readOnly}
                 />
                 <VField
                   name="defaultTypeCode"
                   errors={errors}
                   touched={touched}
-                  value={this.initialValues.defaultTypeCode}
+                  defaultValue={this.initialValues.defaultTypeCode}
+                  readOnly={this.props.readOnly}
                 />
                 <VField
                   name="rightTypeCategoryName"
                   errors={errors}
                   touched={touched}
-                  value={this.initialValues.rightTypeCategoryName}
+                  defaultValue={this.initialValues.rightTypeCategoryName}
+                  readOnly={this.props.readOnly}
                 />
-                <div className="form-group text-left">
-                  <button type="submit" className="btn btn-primary mr-2">
-                    Save
-                  </button>
-                  <button type="reset" className="btn btn-secondary mr-2">
-                    Reset
-                  </button>
-                </div>
+                {!this.props.readOnly ? (
+                  <div className="form-group text-left">
+                    <button type="submit" className="btn btn-primary mr-2">
+                      Save
+                    </button>
+                    <button type="reset" className="btn btn-secondary mr-2">
+                      Reset
+                    </button>
+                  </div>
+                ) : null}
               </Form>
             </CardBody>
           </Card>

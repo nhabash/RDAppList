@@ -23,22 +23,18 @@ export default class TypeCategoryWizard extends React.Component {
       } else return -1;
     });
 
-    console.log(`curr = [${curr}]`);
-
     return curr;
   }
 
   isPrevActive() {
     let c = this.getCurrentPage();
     let p = c - 1;
-    console.log(`isPrevActive: c=${c} p=${p}`);
     return p < 0;
   }
 
   isNextActive() {
     let c = this.getCurrentPage();
     let p = c + 1;
-    console.log(`isNextActive: c=${c} p=${p}`);
     return p >= this.state.steps.length;
   }
 
@@ -72,8 +68,6 @@ export default class TypeCategoryWizard extends React.Component {
     let curr = this.getCurrentPage();
 
     if (curr - 1 < 0) return;
-
-    console.log(`showing step ${curr - 1}`);
 
     this.showStep(curr - 1);
   }
@@ -140,8 +134,13 @@ export default class TypeCategoryWizard extends React.Component {
 }
 
 TypeCategoryWizard.propTypes = {
-  data: PropTypes.objectOf(TypeCategory).isRequired,
+  data: PropTypes.instanceOf(TypeCategory).isRequired,
   onAddType: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired
+  onDelete: PropTypes.func.isRequired,
+  readOnly: PropTypes.bool
+};
+
+TypeCategoryWizard.defultProps = {
+  readOnly: false
 };

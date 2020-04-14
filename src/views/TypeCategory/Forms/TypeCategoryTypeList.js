@@ -94,6 +94,7 @@ export default class TypeCategoryTypeList extends React.Component {
           <RDAppList
             title="Type Codes"
             items={data}
+            readOnly={this.props.readOnly}
             onAdd={this.onAddType.bind(this)}
             onDelete={this.onDelete.bind(this)}
             onSelect={this.onSelect.bind(this)}
@@ -102,6 +103,7 @@ export default class TypeCategoryTypeList extends React.Component {
         {showDetail ? (
           <Col {..._colSize}>
             <RDAppListDetail
+              readOnly={this.props.readOnly}
               showDetail={showDetail}
               detailItem={detailItem}
               onCloseDetail={this.onCloseDetail.bind(this)}

@@ -60,6 +60,7 @@ export default class App extends React.Component {
         <h2>Start editing to see some magic happen!</h2>
         <TypeCategoryWizard
           data={this.state.data}
+          readOnly={false}
           onSelect={this.onSelect.bind(this)}
           onAddType={this.onAddType.bind(this)}
           onDelete={this.onDelete.bind(this)}

@@ -43,6 +43,7 @@ export default class RDAppListDetail extends React.Component {
 
 RDAppListDetail.propTypes = {
   showDetail: PropTypes.bool.isRequired,
+  readOnly: PropTypes.bool,
   detailItem: PropTypes.objectOf(PropTypes.string),
   onCloseDetail: PropTypes.func,
   children: PropTypes.objectOf(React.Component)

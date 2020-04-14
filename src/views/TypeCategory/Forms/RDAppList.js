@@ -40,28 +40,31 @@ export default class RDAppList extends React.Component {
       <Card style={{ border: "2", borderColor: "primary" }}>
         <CardHeader className="text-left">
           <strong>{this.props.title}</strong>
-          {this.getActions()}
+          {!this.props.readOnly ? this.getActions() : null}
         </CardHeader>
         <CardBody>
           <ListGroup>
             {this.props.items &&
-              this.props.items.map(item => {
+              this.props.items.map((item, idx) => {
                 return (
                   <ListGroupItem
+                    key={`lgi_${item}_${idx}`}
                     onClick={event => {
                       this.props.onSelect && this.props.onSelect(event, item);
                     }}
                   >
                     <div className="text-left">
                       {item}{" "}
-                      <div className="card-header-actions">
-                        <button
-                          className="card-header-action btn btn-new"
-                          onClick={event => this.props.onDelete(event, item)}
-                        >
-                          X
-                        </button>
-                      </div>
+                      {!this.props.readOnly ? (
+                        <div className="card-header-actions">
+                          <button
+                            className="card-header-action btn btn-new"
+                            onClick={event => this.props.onDelete(event, item)}
+                          >
+                            X
+                          </button>
+                        </div>
+                      ) : null}
                     </div>
                   </ListGroupItem>
                 );
@@ -76,6 +79,7 @@ export default class RDAppList extends React.Component {
 RDAppList.propTypes = {
   title: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  readOnly: PropTypes.bool,
   onAdd: PropTypes.func,
   onDelete: PropTypes.func,
   onSelect: PropTypes.func

@@ -23,10 +23,43 @@ export const VFieldValidationMessage = props => {
   );
 };
 
+export const VLabelField = props => {
+  const { name, defaultValue } = props;
+
+  return (
+    <>
+      <FormGroup row>
+        <Col className="text-left" sm="4">
+          <Label htmlFor={name}>
+            <strong>
+              {Util.makeDescription(Util.firstCharacterUpperCase(name))}
+            </strong>
+          </Label>
+        </Col>
+        <Col className="text-left" sm="8">
+          <Label>{defaultValue}</Label>
+        </Col>
+      </FormGroup>
+    </>
+  );
+};
+
 export const VField = props => {
   let extraProps = {};
 
-  const { name, type, errors, touched, value, component } = props;
+  const {
+    name,
+    type,
+    errors,
+    touched,
+    defaultValue,
+    component,
+    readOnly
+  } = props;
+
+  if (readOnly) {
+    return <VLabelField {...props} />;
+  }
 
   if (type) {
     extraProps["type"] = type;
@@ -34,13 +67,11 @@ export const VField = props => {
     extraProps["type"] = "text";
   }
 
-  value && (extraProps["defaultValue"] = value);
+  defaultValue && (extraProps["defaultValue"] = defaultValue);
   component && (extraProps["component"] = component);
 
   let _touched = touched && touched[name];
   let _errors = errors && errors[name];
-
-  console.log(`VField: props = [${JSON.stringify(extraProps)}]`);
 
   return (
     <>

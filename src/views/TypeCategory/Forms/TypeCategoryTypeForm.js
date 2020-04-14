@@ -41,33 +41,39 @@ export default class TypeCategoryTypeForm extends React.Component {
                   errors={errors}
                   touched={touched}
                   value={this.initialValues.typeCode}
+                  readOnly={this.props.readOnly}
                 />
                 <VField
                   name="typeName"
                   errors={errors}
                   touched={touched}
                   value={this.initialValues.typeName}
+                  readOnly={this.props.readOnly}
                 />
                 <VField
                   name="typeDescription"
                   errors={errors}
                   touched={touched}
                   value={this.initialValues.typeDescription}
+                  readOnly={this.props.readOnly}
                 />
                 <VField
                   name="rightTypeCode"
                   errors={errors}
                   touched={touched}
                   value={this.initialValues.rightTypeCode}
+                  readOnly={this.props.readOnly}
                 />
-                <div className="form-group text-left">
-                  <button type="submit" className="btn btn-primary mr-2">
-                    Save
-                  </button>
-                  <button type="reset" className="btn btn-secondary">
-                    Reset
-                  </button>
-                </div>
+                {!this.props.readOnly ? (
+                  <div className="form-group text-left">
+                    <button type="submit" className="btn btn-primary mr-2">
+                      Save
+                    </button>
+                    <button type="reset" className="btn btn-secondary mr-2">
+                      Reset
+                    </button>
+                  </div>
+                ) : null}
               </Form>
             </CardBody>
           </Card>

@@ -54,12 +54,16 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { data } = this.state;
+
+    console.log(`App: data: [${JSON.stringify(data, null, 2)}]`);
+
     return (
       <div className="App">
         <h1>Hello CodeSandbox</h1>
         <h2>Start editing to see some magic happen!</h2>
         <TypeCategoryWizard
-          data={this.state.data}
+          data={data}
           readOnly={false}
           onSelect={this.onSelect.bind(this)}
           onAddType={this.onAddType.bind(this)}

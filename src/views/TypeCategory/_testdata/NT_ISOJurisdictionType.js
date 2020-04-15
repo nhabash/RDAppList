@@ -6,6 +6,7 @@ export default {
     loadedBy: "test-user",
     loadDate: 1586190954000
   },
+  id: 3,
   mlUri: "/02231020-0103-4001-8020-023223110310/NT_ISOJurisdictionType.json",
   systemIdentifierText: "NT_ISO",
   typeCategoryName: "JurisdictionType",

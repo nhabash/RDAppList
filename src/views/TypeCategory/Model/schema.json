@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "TypeCategory",
+  "description": "A categorization of a zero or more Types",
+  "comments": "Tag Details Has been added in this version.PDM Version: 1.2",
+  "additionalProperties": false,
+  "properties": {
+      "TypeCategoryIdentifierText": {
+          "type": "string",
+          "maxLength": 200,
+          "primaryKey": true
+      },
+      "TypeCategoryName": {
+          "type": "string",
+          "maxLength": 200
+      },
+      "TypeCategoryDescription": {
+          "type": "string",
+          "maxLength": 200
+      },
+      "SystemIdentifierText": {
+          "type": "string",
+          "maxLength": 100
+      },
+      "RightSystemName": {
+          "type": "string",
+          "maxLength": 100
+      },
+      "RightTypeCategoryName": {
+          "type": "string",
+          "maxLength": 50
+      },
+      "DefaultTypeCode": {
+          "type": "string",
+          "maxLength": 200
+      },
+      "Type": {
+          "type": "array",
+          "additionalItems": true,
+          "uniqueItems": false,
+          "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                  "TypeCode": {
+                      "type": "string",
+                      "maxLength": 200
+                  },
+                  "TagsArray": {
+                      "id": "TagsArray",
+                      "type": "array",
+                      "additionalItems": true,
+                      "uniqueItems": false,
+                      "items": {
+                          "id": "TagName",
+                          "type": "object",
+                          "properties": {
+                              "TagName": {
+                                  "type": "string",
+                                  "maxLength": 100
+                              },
+                              "TagValue": {
+                                  "type": "string",
+                                  "maxLength": 100
+                              }
+                          },
+                          "additionalProperties": false
+                      }
+                  },
+                  "TypeDescription": {
+                      "type": "string",
+                      "maxLength": 200
+                  },
+                  "TypeName": {
+                      "type": "string",
+                      "maxLength": 200
+                  },
+                  "RightTypeCode": {
+                      "type": "string",
+                      "maxLength": 200
+                  }
+              },
+              "required": [
+                  "TypeCode"
+              ]
+          }
+      },
+      "versionInfo": {
+        "$id": "#/properties/mlUri",
+        "type": "object",
+        "title": "The VersionInfo Schema",
+        "description": "An explanation about the purpose of this instance.",
+        "readOnly": true,
+        "properties": {
+            "id": {
+                "$id": "#/properties/versionInfo/id",
+                "type": "string",
+                "title": "The id Schema",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                    "12122333-0223-4122-8212-033022300122"
+                ]
+            },
+            "fileVersion": {
+                "$id": "#/properties/versionInfo/fileVersion",
+                "type": "string",
+                "title": "The fileVersion Schema",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                    "V4.2.1"
+                ]
+            },
+            "targettedRelease": {
+                "$id": "#/properties/versionInfo/targettedRelease",
+                "type": "string",
+                "title": "The targettedRelease Schema",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                    "R1"
+                ]
+            },
+            "loadedBy": {
+                "$id": "#/properties/versionInfo/loadedBy",
+                "type": "string",
+                "title": "The loadedBy Schema",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                    "user1"
+                ]
+            },
+            "loadDate": {
+                "$id": "#/properties/versionInfo/loadDate",
+                "type": "string",
+                "title": "The loadDate Schema",
+                "description": "An explanation about the purpose of this instance.  Numeric representation of load date, which is the date/time of when this load was submitted.",
+                "examples": [
+                    "1584369403994"
+                ]
+            }
+        }
+    }
+  },
+  "required": [
+      "TypeCategoryIdentifierText",
+      "TypeCategoryName",
+      "SystemIdentifierText"
+  ]
+}

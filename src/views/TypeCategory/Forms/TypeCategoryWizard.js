@@ -101,8 +101,8 @@ export default class TypeCategoryWizard extends React.Component {
 
     return (
       <Card>
-        <CardHeader>
-          <strong>Edit TypeCategory Wizard</strong>
+        <CardHeader className={"text-left"}>
+          <strong>{this.props.title}</strong>
         </CardHeader>
         <CardBody>
           {this.isCurrentStep(0) ? this.showStep1() : null}
@@ -134,6 +134,7 @@ export default class TypeCategoryWizard extends React.Component {
 }
 
 TypeCategoryWizard.propTypes = {
+  title: PropTypes.string.isRequired,
   data: PropTypes.instanceOf(TypeCategory).isRequired,
   onAddType: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
